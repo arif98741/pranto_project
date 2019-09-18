@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 18, 2019 at 08:05 PM
+-- Generation Time: Sep 18, 2019 at 09:42 PM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 7.2.3
 
@@ -136,6 +136,15 @@ CREATE TABLE `types` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
+-- Dumping data for table `types`
+--
+
+INSERT INTO `types` (`id`, `type_name`) VALUES
+(1, '3 Years'),
+(2, '4 Years'),
+(5, '5th Year');
+
+--
 -- Indexes for dumped tables
 --
 
@@ -197,7 +206,7 @@ ALTER TABLE `proposals`
 -- AUTO_INCREMENT for table `types`
 --
 ALTER TABLE `types`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Constraints for dumped tables
