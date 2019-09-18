@@ -15,6 +15,8 @@ class Setting {
     /*
     !----------------------------------------------------------
     ! Add Type 
+    ! @param array
+    ! return $string
     !---------------------------------------------------------
     */
     public function add_type($data) {
@@ -28,14 +30,13 @@ class Setting {
                 $this->msg = '<p class="alert alert-warning">Types already added;</p>';
             }
         }else{
-            
+
             $query = "insert into types(type_name) values('$type_name')";
             $stmt  = $this->dbObj->insert($query);
             $this->msg = '<p class="alert alert-success">Types added successfully</p>';
         }
 
         return $this->msg;
-        
     }
 
 
