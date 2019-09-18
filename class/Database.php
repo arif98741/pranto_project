@@ -43,10 +43,10 @@ class Database {
     !----------------------------------------------------
     */
     public function select($query) {
-        $stmt = $this->link->query($query) or die($this->link->error). " error at line number ".__LINE__;;
+        $stmt = $this->link->query($query) or die($this->link->error). " error at line number ".__LINE__;
         if($stmt)
         {
-            if ($stmt->num_rows > 0) {
+            if ($stmt) {
                 return $stmt;
             } else {
                 return false;

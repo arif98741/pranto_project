@@ -1,14 +1,15 @@
-<?php include ('inc/header.php'); ?>
+ <?php include ('inc/header.php'); ?>
 
-	<!--container-->
-	<div class="container mt-4">
-		<nav aria-label="breadcrumb">
-		  <ol class="breadcrumb">
-		    <li class="breadcrumb-item"><a href="#" class="active">Home</a></li>
-		    
-		  </ol>
-		</nav>
-		<table id="dataTable" style="width: 100%; ">
+ <!--container-->
+ <div class="container mt-4">
+ 	<nav aria-label="breadcrumb">
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item"><a href="index.php">Home</a></li>
+			<li class="breadcrumb-item"><a href="add_student.php">Add Student</a></li>
+			<li class="breadcrumb-item active" aria-current="page">Students</li>
+		</ol>
+	</nav>
+ 	<table id="dataTable" style="width: 100%; ">
  		<thead>
  			<tr>
  				<th>Serial</th>
@@ -45,6 +46,6 @@
 
  		</tbody>
  	</table>
-	</div>
-	<!-- container end -->
-<?php include ('inc/footer.php'); ?>
+ </div>
+ <!-- container end -->
+ <?php include ('inc/footer.php'); ?>

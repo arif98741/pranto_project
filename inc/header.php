@@ -19,7 +19,7 @@ $message = '';
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Student Management System</title>
+	<title><?php echo $helper->dynamicPageTitle(); ?>Student Management System</title>
 	<link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="node_modules/datatables.net-dt/css/jquery.dataTables.min.css">
 	<link rel="stylesheet" type="text/css" href="asset/css/style.css">
@@ -28,7 +28,7 @@ $message = '';
 	<!-- navbar start -->	
 
 	<nav class="navbar navbar-expand-lg navbar-light bg-red nav-background-color">
-		<a class="navbar-brand" href="index.php">Student Management </a>
+		<a class="navbar-brand" href="index.php" style="color: #fff;">Student Management </a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
@@ -45,7 +45,7 @@ $message = '';
 					</a>
 					<div class="dropdown-menu nav-background-color" aria-labelledby="navbarDropdown">
 						<a class="dropdown-item" href="add_student.php">Add Student</a>
-						<a class="dropdown-item" href="studentlist.php">Student List</a>
+						<a class="dropdown-item" href="students.php">Student List</a>
 					</div>
 				</li>
 

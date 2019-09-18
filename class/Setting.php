@@ -12,6 +12,40 @@ class Setting {
         $this->helpObj = new Helper();
     }
 
+
+    /*
+    !----------------------------------------------------------
+    ! Type List
+    ! return $array
+    !---------------------------------------------------------
+    */
+    public function type_list() {
+    
+        $query = "select * from types order by type_name asc";
+        $stmt  = $this->dbObj->select($query);
+        if ($stmt) {
+            return $stmt;
+        }
+        
+    }
+
+
+    /*
+    !----------------------------------------------------------
+    ! Department List
+    ! return $array
+    !---------------------------------------------------------
+    */
+    public function department_list() {
+    
+        $query = "select * from departments order by department_name asc";
+        $stmt  = $this->dbObj->select($query);
+        if ($stmt) {
+            return $stmt;
+        }
+        
+    }
+
     /*
     !----------------------------------------------------------
     ! Add Type 
@@ -68,7 +102,7 @@ class Setting {
 
 
 
-     /*
+    /*
     !----------------------------------------------------------
     ! Edit department
     ! @param id
