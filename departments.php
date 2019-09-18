@@ -1,4 +1,10 @@
  <?php include ('inc/header.php'); ?>
+ <?php 
+if (isset($_POST['department_name'])) {
+	$message = $set->add_department($_POST); 
+}
+?>
+
 
  <!--container-->
  <div class="container mt-4">
@@ -9,6 +15,15 @@
 			<li class="breadcrumb-item active" aria-current="page">Departments</li>
 		</ol>
 	</nav>
+
+	<?php  if(!empty($message)){?>
+		<div class="row">
+			<div class="col-md-12" id="message">
+				<?php echo $message; ?>
+			</div>
+		</div>
+
+	<?php } ?>
 
  	<table id="dataTable" style="width: 100%; ">
  		<thead>

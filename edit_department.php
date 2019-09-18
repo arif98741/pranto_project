@@ -1,6 +1,12 @@
 <?php include ('inc/header.php'); ?>
-
-
+<?php 
+	if (isset($_GET['action'])) {
+		$id = $_GET['id'];
+		$department_name  = $set->edit_department($id);
+	}else{
+		header('location: departments.php');
+	}
+?>
 
 <!--container-->
 
@@ -26,7 +32,7 @@
 			<div class="col-md-6">
 				<div class="form-group">
 					<label for="exampleInputEmail1">Department Name</label>
-					<input type="text"  name="department_name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Your Department Name " required="">
+					<input type="text" value="<?php echo $department_name; ?>"  name="department_name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Your Department Name " required="">
 				</div>
 				
 			</div>

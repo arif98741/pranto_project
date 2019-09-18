@@ -6,8 +6,8 @@
 	<nav aria-label="breadcrumb">
 		<ol class="breadcrumb">
 			<li class="breadcrumb-item"><a href="index.php">Home</a></li>
-			<li class="breadcrumb-item"><a href="memberlist.php">Member</a></li>
-			<li class="breadcrumb-item active" aria-current="page">Add Member</li>
+			<li class="breadcrumb-item"><a href="students.php">Student</a></li>
+			<li class="breadcrumb-item active" aria-current="page">Add Student</li>
 		</ol>
 	</nav>
 
