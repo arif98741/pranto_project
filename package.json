@@ -1,0 +1,38 @@
+{
+  "name": "oop_crud",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "bootstrap": "^4.0.0",
+    "datatables.net": "^1.10.19",
+    "datatables.net-dt": "^1.10.19",
+    "jquery": "^3.3.1"
+  },
+  "devDependencies": {
+    "@fortawesome/fontawesome-free": "^5.1.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arif98741/oop_crud.git"
+  },
+  "keywords": [
+    "oop",
+    "crud",
+    "object",
+    "orinted",
+    "update",
+    "delete",
+    "create",
+    "mysql"
+  ],
+  "author": "Ariful Islam",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/arif98741/oop_crud/issues"
+  },
+  "homepage": "https://github.com/arif98741/oop_crud#readme"
+}
