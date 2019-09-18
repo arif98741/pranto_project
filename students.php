@@ -8,6 +8,7 @@
 			<li class="breadcrumb-item"><a href="add_student.php">Add Student</a></li>
 			<li class="breadcrumb-item active" aria-current="page">Students</li>
 		</ol>
+		<p>URL: <a href="http://<?php echo $helper->currentPath(); ?>">http://<?php echo $helper->currentPath(); ?></a></p>
 	</nav>
  	<table id="dataTable" style="width: 100%; ">
  		<thead>

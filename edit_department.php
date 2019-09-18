@@ -17,6 +17,7 @@
 			<li class="breadcrumb-item"><a href="departments.php">Department</a></li>
 			<li class="breadcrumb-item active" aria-current="page">Add Department</li>
 		</ol>
+		<p>URL: <a href="http://<?php echo $helper->currentPath(); ?>">http://<?php echo $helper->currentPath(); ?></a></p>
 	</nav>
 
 	<!-- form for adding member -->

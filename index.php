@@ -1,50 +1,39 @@
 <?php include ('inc/header.php'); ?>
 
-	<!--container-->
-	<div class="container mt-4">
-		<nav aria-label="breadcrumb">
-		  <ol class="breadcrumb">
-		    <li class="breadcrumb-item"><a href="#" class="active">Home</a></li>
-		    
-		  </ol>
-		</nav>
-		<table id="dataTable" style="width: 100%; ">
- 		<thead>
- 			<tr>
- 				<th>Serial</th>
- 				<th>Name</th>
- 				<th>Student ID</th>
- 				<th>Department</th>
- 				<th>Batch</th>
- 				<th>Type</th>
- 				<th>Username</th>
- 				<th>Email</th>
- 				<th>Action</th>
- 			</tr>
- 		</thead>
- 		<tbody>
- 			<?php 
- 			$sql = "select s.*,t.type_name,d.department_name from students s join types t on s.type_id = t.id join departments d on s.department_id = d.id  order by s.name asc";
-			$stmt = $db->select($sql);
+<!--container-->
+<div class="container mt-4">
+	<nav aria-label="breadcrumb">
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item"><a href="#" class="active">Home</a></li>
+		</ol>
+		<p>URL: <a href="http://<?php echo $helper->currentPath(); ?>">http://<?php echo $helper->currentPath(); ?></a></p>
+	</nav>
 
- 			$i = 1;
- 				while ($row = $stmt->fetch_assoc()) { $i++; ?>
- 					<tr>
- 						<td><?php echo $i; ?></td>
- 						<td><?php echo $row['name']; ?></td>
- 						<td><?php echo $row['student_id']; ?></td>
- 						<td><?php echo $row['department_name']; ?></td>
- 						<td><?php echo $row['batch_no']; ?></td>
- 						<td><?php echo $row['type_name']; ?></td>
- 						<td><?php echo $row['username']; ?></td>
- 						<td><?php echo $row['email']; ?></td>
- 						<td><?php echo $row['address']; ?></td>
- 						<td><a href="viewmember.php?action=view&id=<?php echo $row['id']; ?>" class="btn btn-success">V</a>&nbsp;<a href="editmember.php?action=edit&id=<?php echo $row['id']; ?>" class="btn btn-primary">E</a>&nbsp;<a href="?action=delete&id=<?php echo $row['id']; ?>" class="btn btn-danger">D</a></td>
- 					</tr>
- 				<?php	}?>
+	<div class="row">
+		<div class="col-md-4">
+			<div class="card" style="width: 18rem;">
+				<!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
+				<div class="card-body">
+					<h5 class="card-title text-center"><i class="fa fa-university"></i>&nbsp; Department</h5>
+					<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+					<a href="departments.php" class="btn btn-primary">Go </a>
+				</div>
+			</div>
+		</div>
 
- 		</tbody>
- 	</table>
+		<div class="col-md-4">
+			<div class="card" style="width: 18rem;">
+				<!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
+				<div class="card-body">
+					<h5 class="card-title text-center"><i class="fa fa-users"></i>&nbsp; Students</h5>
+					<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+					<a href="students.php" class="btn btn-primary  text-center;">Go</a>
+				</div>
+			</div>
+		</div>
+		<p class="mt-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora cupiditate, temporibus mollitia, repellat minima vero eligendi ea est voluptas delectus.</p>
 	</div>
-	<!-- container end -->
+
+</div>
+<!-- container end -->
 <?php include ('inc/footer.php'); ?>

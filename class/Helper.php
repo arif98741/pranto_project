@@ -151,29 +151,8 @@
 	*/
 	public function currentPath()
 	{
+		return  $_SERVER['SERVER_NAME'].$_SERVER['PHP_SELF'];
 		
-		$path_array = $_SERVER['PHP_SELF'];
-		//return $path_array;
-		$explode = explode('/', $path_array);
-		unset($explode[0]);
-		//echo "<pre>";
-		//print_r(explode('/', $path_array));
-		//echo "</pre>";
-		$path = []; 
-
-		for ($i = 1; $i <count($explode)  ; $i++) {
-			//echo $explode[$i]."<br>";
-			if ($explode[$i] == $explode['1']) {
-				$arr[] = "index.php";
-			} else {
-				$arr[] = $explode[$i];
-
-			}
-			$path =  $arr;
-		}
-
-		return $path;
-
 	}
 
 

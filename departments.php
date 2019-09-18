@@ -14,6 +14,7 @@ if (isset($_POST['department_name'])) {
 			<li class="breadcrumb-item"><a href="add_department.php">Add Department</a></li>
 			<li class="breadcrumb-item active" aria-current="page">Departments</li>
 		</ol>
+		<p><a href="http://<?php echo $helper->currentPath(); ?>">http://<?php echo $helper->currentPath(); ?></a></p>
 	</nav>
 
 	<?php  if(!empty($message)){?>

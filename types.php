@@ -13,6 +13,7 @@ if (isset($_POST['type_name'])) {
 			<li class="breadcrumb-item"><a href="add_type.php">Add Type</a></li>
 			<li class="breadcrumb-item active" aria-current="page">Types</li>
 		</ol>
+		<p>URL: <a href="http://<?php echo $helper->currentPath(); ?>">http://<?php echo $helper->currentPath(); ?></a></p>
 	</nav>
 
 	<?php  if(!empty($message)){?>

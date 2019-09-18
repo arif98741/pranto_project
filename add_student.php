@@ -13,6 +13,7 @@
 			<li class="breadcrumb-item"><a href="students.php">Student</a></li>
 			<li class="breadcrumb-item active" aria-current="page">Add Student</li>
 		</ol>
+		<p>URL: <a href="http://<?php echo $helper->currentPath(); ?>">http://<?php echo $helper->currentPath(); ?></a></p>
 	</nav>
 
 	<!-- form for adding member -->
