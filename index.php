@@ -22,12 +22,12 @@
 			</thead>
 			<tbody>
 				<?php 
-					$sql = "select * from member";
-					$stmt = $db->pdo->query($sql);
+					$sql = "select * from students";
+					$stmt = $db->select($sql);
 
 
 					if($stmt){ $i = 0;
-						while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) { $i++; ?>
+						while ($row = $stmt->fetch_assoc()) { $i++; ?>
 						    <tr>
 								<td><?php echo $i; ?></td>
 								<td><?php echo $row['name']; ?></td>

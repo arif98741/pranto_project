@@ -3,39 +3,32 @@
 class Session {
 
     /*
-    ||==========================================
-    ||  Session Initialization
-    ||==========================================
+    !---------------------------
+    !   Initialize Session 
+    !---------------------------
     */
-    public static function initialization() {
-        if (version_compare(phpversion(), '5.4.0', '<')) {
-            if (session_id() == '') {
-                session_start();
-            } else {
-                if (session_status() == PHP_SESSION_NONE) {
-                    session_start();
-                }
-            }
-        }
+    public static function init() {
+        
+        session_start();
+
     }
 
-    /*
-    ||==========================================
-    ||  Set Session
-    || @param $key,$value
-    || return object
-    ||==========================================
-    */
-    public static function set($key, $value) {
-        $_SESSION[$key] = $value;
-    }
 
     /*
-    ||==========================================
-    ||  Get Session Value
-    || @param $key,
-    || return response
-    ||==========================================
+    !---------------------------
+    !   Set Session Value
+    !---------------------------
+    */
+    public static function set($key, $val) {
+        $_SESSION[$key] = $val;
+    }
+
+
+    /*
+    !---------------------------
+    !  Get Session Value
+    !  @param key
+    !---------------------------
     */
     public static function get($key) {
         if (isset($_SESSION[$key])) {
@@ -45,16 +38,45 @@ class Session {
         }
     }
 
+
     /*
-    ||==========================================
-    ||  Check User Login and Redirection
-    ||==========================================
+    !---------------------------
+    !   Check User Login Status
+    !  @return bool
+    !---------------------------
     */
-    public static function checkLogin() {
-        $login = self::get(['login']);
-        if ($login) {
-            header("Location: index.php");
+    public static function checkSession() {
+        self::init();
+        if (self::get("login") == false) {
+            self::destroy();
+            header('Location: login.php');
         }
     }
 
+
+    /*
+    !--------------------------------------
+    !   Check user login 
+    !   if true> redirect to homepage
+    !--------------------------------------
+    */
+    public static function checkLogin() {
+        self::init();
+        if (self::get("login") == true) {
+            header('Location: index.php');
+        }
+    }
+
+    /*
+    !---------------------------
+    !   Destroy Session Date
+    !---------------------------
+    */
+    public static function destroy() {
+        session_destroy();
+        header('Location: login.php');
+    }
+
 }
+
+?>

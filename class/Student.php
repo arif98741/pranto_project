@@ -1,9 +1,8 @@
 <?php
 
 include_once "Session.php";
-include 'Database.php';
 
-class Member {
+class Student {
 
     private $db;
 

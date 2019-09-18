@@ -8,20 +8,18 @@ function my_autoloader($class) {
 }
 
 spl_autoload_register('my_autoloader');
-include_once('lib/helper/Helper.php');
-$mem = new Member();
-$db  = new Database();
+$db  	= new Database();
+$stu 	= new Student();
+$set  	= new Setting();
 $helper = new Helper();
-
-	//echo $helper->currentPath();
-
+$message = '';
 
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>PHP OOP CRUD</title>
+	<title>Student Management System</title>
 	<link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="node_modules/datatables.net-dt/css/jquery.dataTables.min.css">
 	<link rel="stylesheet" type="text/css" href="asset/css/style.css">
@@ -30,7 +28,7 @@ $helper = new Helper();
 	<!-- navbar start -->	
 
 	<nav class="navbar navbar-expand-lg navbar-light bg-red nav-background-color">
-		<a class="navbar-brand" href="#">Student Management </a>
+		<a class="navbar-brand" href="index.php">Student Management </a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
@@ -43,13 +41,24 @@ $helper = new Helper();
 
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						Member
+						Student
 					</a>
 					<div class="dropdown-menu nav-background-color" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="addmember.php">Add Member</a>
-						<a class="dropdown-item" href="memberlist.php">Member List</a>
+						<a class="dropdown-item" href="add_student.php">Add Student</a>
+						<a class="dropdown-item" href="studentlist.php">Student List</a>
 					</div>
 				</li>
+
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Settings
+					</a>
+					<div class="dropdown-menu nav-background-color" aria-labelledby="navbarDropdown">
+						<a class="dropdown-item" href="types.php">Type List</a>
+						<a class="dropdown-item" href="departments.php">Department List</a>
+					</div>
+				</li>
+
 
 				<li class="nav-item">
 					<a class="nav-link" href="#">Login</a>
