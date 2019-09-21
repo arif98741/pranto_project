@@ -1,7 +1,17 @@
 <?php include ('inc/header.php'); ?>
 <?php 
+
+// delete type
+if (isset($_GET['action']) && $_GET['action'] == 'delete') {
+	$message = $set->delete_type($_GET); 
+}
+
+
 if (isset($_POST['type_name'])) {
 	$message = $set->add_type($_POST); 
+}
+if (isset($_POST['update_type'])) {
+	$message = $set->update_type($_POST); 
 }
 ?>
 
@@ -13,7 +23,7 @@ if (isset($_POST['type_name'])) {
 			<li class="breadcrumb-item"><a href="add_type.php">Add Type</a></li>
 			<li class="breadcrumb-item active" aria-current="page">Types</li>
 		</ol>
-		<p>URL: <a href="http://<?php echo $helper->currentPath(); ?>">http://<?php echo $helper->currentPath(); ?></a></p>
+	
 	</nav>
 
 	<?php  if(!empty($message)){?>
@@ -44,7 +54,14 @@ if (isset($_POST['type_name'])) {
 						<td><?php echo $i; ?></td>
 						<td><?php echo $row['type_name']; ?></td>
 						
-						<td><a href="edit_type.php?action=edit&id=<?php echo $row['id']; ?>" class="btn btn-primary">E</a></td>
+						<td>
+							<a href="edit_type.php?action=edit&id=<?php echo $row['id']; ?>" class="btn btn-primary btn-sm">E</a>
+
+							<a href="?action=delete&id=<?php echo $row['id']; ?>" class="btn btn-danger btn-sm" onclick="return(confirm('are you sure to delete?'))">D</a>
+
+					
+
+						</td>
 					</tr>
 				<?php	}
 			}

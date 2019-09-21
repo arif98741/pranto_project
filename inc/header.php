@@ -1,7 +1,6 @@
 <?php 
+session_start();
 $self_path  = $_SERVER['PHP_SELF'];
-$explode = explode('/', $self_path);
-unset($explode[0]);
 
 function my_autoloader($class) {
 	include 'class/' .$class.'.php';

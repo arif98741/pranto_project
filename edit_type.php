@@ -2,10 +2,8 @@
 <?php 
 if (isset($_GET['action'])) {
 	$id = $_GET['id'];
-	$department = $set->edit_department($id);
-	//echo "<pre>";
-	//print_r( $set->edit_department($id));
-	//exit;
+	$type = $set->edit_type($id);
+	
 }else{
 	header('location: departments.php');
 }
@@ -17,14 +15,15 @@ if (isset($_GET['action'])) {
 	<nav aria-label="breadcrumb">
 		<ol class="breadcrumb">
 			<li class="breadcrumb-item"><a href="index.php">Home</a></li>
-			<li class="breadcrumb-item"><a href="departments.php">Department</a></li>
-			<li class="breadcrumb-item active" aria-current="page">Add Department</li>
+			<li class="breadcrumb-item"><a href="types.php">Type</a></li>
+			<li class="breadcrumb-item active" aria-current="page">Edit Type</li>
 		</ol>
-	
+		
+
 	</nav>
 
 	<!-- form for adding member -->
-	<form method="post" action="departments.php">
+	<form method="post" action="types.php">
 		
 		<div class="row">
 
@@ -35,9 +34,9 @@ if (isset($_GET['action'])) {
 
 			<div class="col-md-6">
 				<div class="form-group">
-					<label for="exampleInputEmail1">Department Name</label>
-					<input type="text" value="<?php echo $department['department_name']; ?>"  name="department_name" class="form-control" id="<exampleInputEmail1></exampleInputEmail1>" aria-describedby="emailHelp" placeholder="Enter Your Department Name " required="">
-					<input name="id" type="hidden" value="<?php echo $department['id']; ?>">
+					<label for="exampleInputEmail1">Type Name</label>
+					<input type="text" value="<?php echo $type['type_name']; ?>"  name="type_name" class="form-control" id="<exampleInputEmail1></exampleInputEmail1>" aria-describedby="emailHelp" placeholder="Enter Your Department Name " required="">
+					<input name="id" type="hidden" value="<?php echo $type['id']; ?>">
 				</div>
 				
 			</div>
@@ -46,7 +45,7 @@ if (isset($_GET['action'])) {
 		<div class="row">
 			<div class="col-md-offset-4 col-md-4">
 				<button class="btn btn-danger" type="reset">Reset</button>
-				<button class="btn btn-success" type="submit" name="update_department">Updte</button>
+				<button class="btn btn-success" type="submit" name="update_type">Update</button>
 			</div>
 
 			

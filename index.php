@@ -6,7 +6,7 @@
 		<ol class="breadcrumb">
 			<li class="breadcrumb-item"><a href="#" class="active">Home</a></li>
 		</ol>
-		<p>URL: <a href="http://<?php echo $helper->currentPath(); ?>">http://<?php echo $helper->currentPath(); ?></a></p>
+	
 	</nav>
 
 	<div class="row">
