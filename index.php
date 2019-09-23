@@ -15,7 +15,7 @@
 				<!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
 				<div class="card-body">
 					<h5 class="card-title text-center"><i class="fa fa-university"></i>&nbsp; Department</h5>
-					<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+					<p class="card-text">A department is a part of university with several teachers and students also.</p>
 					<a href="departments.php" class="btn btn-primary">Go </a>
 				</div>
 			</div>
@@ -26,13 +26,15 @@
 				<!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
 				<div class="card-body">
 					<h5 class="card-title text-center"><i class="fa fa-users"></i>&nbsp; Students</h5>
-					<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+					<p class="card-text">Students are main players of university. They study and become experts having proper education.</p>
 					<a href="students.php" class="btn btn-primary  text-center;">Go</a>
 				</div>
 			</div>
 		</div>
-		<p class="mt-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora cupiditate, temporibus mollitia, repellat minima vero eligendi ea est voluptas delectus.</p>
+		<br>
 	</div>
+		<p style="margin-top: 30px;">Created by: <strong>Pranto Paul</strong></p>
+		<p style="margin: 0px; padding: 0px;"><strong>North western University</strong></p>
 
 </div>
 <!-- container end -->

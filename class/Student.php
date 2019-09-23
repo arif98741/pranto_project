@@ -57,7 +57,68 @@ class Student {
         return $this->msg;
     }
 
+
+    /*
+    ||==========================================
+    || Edit Student
+    || return @array
+    ||==========================================
+    */
+    public function edit_student($student_id) {
+     
+        $query = "select * from students where id='$student_id'";
+        $stmt  = $this->db->select($query);
+        if ($stmt) {
+            if ($this->db->row($stmt) > 0) {
+                return $stmt->fetch_assoc();
+            }
+        }else{
+
+            header('location: departments.php');
+        }
+    }
+
+
+    /*
+    ||==========================================
+    || Update Student
+    || @param array
+    || return string
+    ||==========================================
+    */
+    public function update_student($data) { //form validation method 
+        
+        $name           = $this->help->validation($_POST['name']);
+        $student_id     = $this->help->validation($_POST['student_id']);
+        $username       = $this->help->validation($_POST['username']);
+        $mobile         = $this->help->validation($_POST['mobile']);
+        $email          = $this->help->validation($_POST['email']);
+        $address        = $this->help->validation($_POST['address']);
+        $department_id  = $this->help->validation($_POST['department_id']);
+        $type_id        = $this->help->validation($_POST['type_id']);
+        $batch_no       = $this->help->validation($_POST['batch_no']);
+        $password       = $this->help->validation($_POST['password']);
+        $id             = $this->help->validation($_POST['id']);
+
     
+        //update student data
+        if (empty($password)) {
+            $query = "update students set name='$name',student_id='$student_id',username='$username',mobile='$mobile',email='$email',address='$address',department_id='$department_id',type_id='$type_id',batch_no='$batch_no' where id='$id'";
+        }else{
+            $query = "update students set name='$name',student_id='$student_id',username='$username',mobile='$mobile',email='$email',address='$address',department_id='$department_id',type_id='$type_id',batch_no='$batch_no',password='$password' where id='$id'";
+        }
+
+
+        $stmt  = $this->db->update($query);
+        if ($stmt) {
+            $_SESSION['flash_success'] = "<p class='alert alert-success' id='message'> Student updated successfully</p>";
+            header('location: students.php');
+        }else{
+            $_SESSION['flash_error'] = "<p class='alert alert-warning' id='message'> Student update failed</p>";
+            header('location: students.php');
+        }
+    }
+
 
     /*
     ||==========================================
@@ -72,6 +133,44 @@ class Student {
             return $stmt;
         }
     }    
+
+
+     /*
+    ||==========================================
+    || Single Student
+    || return @array
+    ||==========================================
+    */
+    public function single_student($id) { 
+        $query = "select s.*,t.type_name,d.department_name from students s join types t on s.type_id = t.id join departments d on s.department_id = d.id  where s.id='$id'";
+        $stmt  = $this->db->select($query);
+        if ($stmt) {
+            return $stmt->fetch_assoc();
+        }
+    }    
+
+    /*
+    ||==========================================
+    || Delete Student
+    || return @array
+    ||==========================================
+    */
+    public function delete_student($data) { 
+     
+        $id = $data['id'];
+
+        $query = "delete from students where id='$id'";
+        $stmt  = $this->db->delete($query);
+        if ($stmt) {
+            $_SESSION['flash_success'] = "<p class='alert alert-success' id='message'> Student deleted successfully</p>";
+            //header('location: students.php');
+        }else{
+            $_SESSION['flash_error'] = "<p class='alert alert-warning' id='message'> Student delete failed</p>";
+            //header('location: students.php');
+        }
+    }    
+
+    
 
 
 

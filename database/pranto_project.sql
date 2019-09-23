@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 18, 2019 at 09:42 PM
+-- Generation Time: Sep 23, 2019 at 03:17 AM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 7.2.3
 
@@ -41,10 +41,31 @@ CREATE TABLE `departments` (
 --
 
 INSERT INTO `departments` (`id`, `department_name`, `dean`, `created_at`, `updated_at`) VALUES
-(1, 'CSE1', NULL, '2019-06-19 09:15:01', '2019-06-19 09:15:01'),
-(3, 'Finance', NULL, '2019-06-19 09:15:21', '2019-06-19 09:15:21'),
-(4, 'Textile', NULL, '2019-06-20 12:29:50', '2019-06-20 12:29:50'),
-(7, 'SWE', NULL, '2019-06-20 20:34:59', '2019-06-20 20:34:59');
+(1, 'CSE142', NULL, '2019-06-19 09:15:01', '2019-06-19 09:15:01'),
+(3, 'Financeas', NULL, '2019-06-19 09:15:21', '2019-06-19 09:15:21'),
+(4, 'Textiles', NULL, '2019-06-20 12:29:50', '2019-06-20 12:29:50');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `marks`
+--
+
+CREATE TABLE `marks` (
+  `id` int(11) NOT NULL,
+  `registration_id` int(11) NOT NULL,
+  `written` int(3) DEFAULT '0',
+  `oral` int(3) DEFAULT '0',
+  `practical` int(3) DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `marks`
+--
+
+INSERT INTO `marks` (`id`, `registration_id`, `written`, `oral`, `practical`) VALUES
+(1, 1, 10, 15, 5),
+(2, 4, 8, 7, 4);
 
 -- --------------------------------------------------------
 
@@ -107,12 +128,35 @@ INSERT INTO `proposals` (`id`, `proposal_title`, `proposal_type`, `student_id`, 
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `registration`
+--
+
+CREATE TABLE `registration` (
+  `id` int(11) NOT NULL,
+  `student_id` int(11) NOT NULL,
+  `subject_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `registration`
+--
+
+INSERT INTO `registration` (`id`, `student_id`, `subject_id`) VALUES
+(1, 3, 10),
+(4, 2, 1),
+(7, 2, 9),
+(8, 3, 9);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `students`
 --
 
 CREATE TABLE `students` (
   `id` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
+  `student_id` varchar(20) NOT NULL,
   `department_id` int(11) NOT NULL,
   `type_id` int(11) NOT NULL,
   `batch_no` varchar(100) NOT NULL,
@@ -123,6 +167,65 @@ CREATE TABLE `students` (
   `address` varchar(100) DEFAULT NULL,
   `status` varchar(40) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `students`
+--
+
+INSERT INTO `students` (`id`, `name`, `student_id`, `department_id`, `type_id`, `batch_no`, `username`, `password`, `email`, `mobile`, `address`, `status`) VALUES
+(2, 'Ariful Islam', '161-15-946', 1, 1, '14', 'arif123', '12345', 'arif@gmail.com', '01750-840217', 'Elenga, Tangail, Bangladesh', NULL),
+(3, 'Kamrul Islam', '161-15-940', 3, 2, '14', 'kamrul123', '12345', 'kamrul@gmail.com', '01733499574', 'Dhaka, Bangladesh', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `subjects`
+--
+
+CREATE TABLE `subjects` (
+  `id` int(11) NOT NULL,
+  `subject_name` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `subjects`
+--
+
+INSERT INTO `subjects` (`id`, `subject_name`) VALUES
+(1, 'Database Managements'),
+(4, 'Computer Fundamentals'),
+(6, 'Object Oriented PRogramming'),
+(7, 'Algorithm and Design'),
+(8, 'Computer Graphics'),
+(9, 'Bio Informatices'),
+(10, 'Bangladesh Studiess'),
+(11, 'Artificial Intelligence'),
+(12, 'Web Engineering');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_user`
+--
+
+CREATE TABLE `tbl_user` (
+  `school_id` int(11) NOT NULL,
+  `applicant_name` varchar(100) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `school_name` varchar(100) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL DEFAULT '',
+  `mobile` varchar(100) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `email` varchar(100) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `username` varchar(100) DEFAULT NULL,
+  `password` varchar(100) DEFAULT NULL,
+  `website` varchar(100) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `status` varchar(25) DEFAULT 'active'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_user`
+--
+
+INSERT INTO `tbl_user` (`school_id`, `applicant_name`, `school_name`, `mobile`, `email`, `username`, `password`, `website`, `status`) VALUES
+(1, 'Administrator', 'Test School', '01777615690', 'bahcghs@admin.com', 'admin', '21232f297a57a5a743894a0e4a801fc3', 'www.bahcghs.edu.bd', 'active');
 
 -- --------------------------------------------------------
 
@@ -142,7 +245,7 @@ CREATE TABLE `types` (
 INSERT INTO `types` (`id`, `type_name`) VALUES
 (1, '3 Years'),
 (2, '4 Years'),
-(5, '5th Year');
+(5, '5th Yearsdfsd');
 
 --
 -- Indexes for dumped tables
@@ -153,6 +256,13 @@ INSERT INTO `types` (`id`, `type_name`) VALUES
 --
 ALTER TABLE `departments`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `marks`
+--
+ALTER TABLE `marks`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `registration_id` (`registration_id`);
 
 --
 -- Indexes for table `notices`
@@ -167,12 +277,33 @@ ALTER TABLE `proposals`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `registration`
+--
+ALTER TABLE `registration`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `student_id` (`student_id`),
+  ADD KEY `subject_id` (`subject_id`);
+
+--
 -- Indexes for table `students`
 --
 ALTER TABLE `students`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `department_id` (`department_id`),
-  ADD KEY `type_id` (`type_id`);
+  ADD KEY `students_ibfk_1` (`department_id`),
+  ADD KEY `students_ibfk_2` (`type_id`);
+
+--
+-- Indexes for table `subjects`
+--
+ALTER TABLE `subjects`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_user`
+--
+ALTER TABLE `tbl_user`
+  ADD PRIMARY KEY (`school_id`),
+  ADD UNIQUE KEY `email` (`email`);
 
 --
 -- Indexes for table `types`
@@ -188,7 +319,13 @@ ALTER TABLE `types`
 -- AUTO_INCREMENT for table `departments`
 --
 ALTER TABLE `departments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `marks`
+--
+ALTER TABLE `marks`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `notices`
@@ -203,6 +340,30 @@ ALTER TABLE `proposals`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
+-- AUTO_INCREMENT for table `registration`
+--
+ALTER TABLE `registration`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `students`
+--
+ALTER TABLE `students`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `subjects`
+--
+ALTER TABLE `subjects`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `tbl_user`
+--
+ALTER TABLE `tbl_user`
+  MODIFY `school_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `types`
 --
 ALTER TABLE `types`
@@ -211,6 +372,19 @@ ALTER TABLE `types`
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `marks`
+--
+ALTER TABLE `marks`
+  ADD CONSTRAINT `marks_ibfk_1` FOREIGN KEY (`registration_id`) REFERENCES `registration` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `registration`
+--
+ALTER TABLE `registration`
+  ADD CONSTRAINT `registration_ibfk_1` FOREIGN KEY (`student_id`) REFERENCES `students` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `registration_ibfk_2` FOREIGN KEY (`subject_id`) REFERENCES `subjects` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `students`
